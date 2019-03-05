@@ -1,5 +1,5 @@
 # STM32知识点随记
-## 自定义结构体与全局变量用法--2019.3.5
+## 1、自定义结构体与全局变量用法--2019.3.5
 >前提：已有自定义文件库wk_usart.c和wk_usart.h
 >
 * 举例：定时器输入捕获用户自定义变量结构体声明
@@ -17,17 +17,19 @@ typedef struct
 }TIM_ICUserValueTypeDef;
 ```
 
-`如果在wk_usart.h文件的最后加上：
+如果在wk_usart.h文件的最后加上：
 
 ```C
-extern TIM_ICUserValueTypeDef TIM_ICUserValueStructure;
+extern TIM_ICUserValueTypeDef TIM_ICUserValueStructure;//TIM_ICUserValueStructure结构体在wk_usart.C文件中定义
 ```
 则结构体TIM_ICUserValueStructure变成了全局变量，任何包含了wk_usart.h的文件中都可以直接使用
 
-### 在wk_usart.h文件中：
+### 在wk_usart.C文件中：
 
 ```C
-// 定时器输入捕获用户自定义变量结构体定义
+// 定义一个TIM_ICUserValueTypeDef类型的TIM_ICUserValueStructure结构体并初始化
 TIM_ICUserValueTypeDef TIM_ICUserValueStructure = {0,0,0,0};
 ```
-进行参数初始化
+
+`总结：`
+结构体类型定义和全局变量声明在.h文件中，变量的定义在.C文件中。
