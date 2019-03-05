@@ -31,5 +31,5 @@ extern TIM_ICUserValueTypeDef TIM_ICUserValueStructure;//TIM_ICUserValueStructur
 TIM_ICUserValueTypeDef TIM_ICUserValueStructure = {0,0,0,0};
 ```
 
-`总结：`
+### 总结：
 结构体类型定义和全局变量声明在.h文件中，变量的定义在.C文件中。
